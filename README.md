@@ -54,7 +54,8 @@ public function rules()
 public function messages()
 {
     return [
-        'g-recaptcha-response' => 'Please ensure that you are a human!'
+        'g-recaptcha-response.required' => 'Please ensure that you are a human!'
+        'g-recaptcha-response.recaptcha' => 'Please ensure that you are a human!'
     ];
 }
 ```
