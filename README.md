@@ -23,6 +23,33 @@ After installation you can optionally publish your configuration file
 php artisan vendor:publish --tag="laravel-google-recaptcha-v2-config"
 ```
 
+## configuration
+
+This is the config file
+
+```php
+return [
+
+    /*
+     * Your Google Recaptcha key
+     */
+    'key' => env('GOOGLE_RECAPTCHA_KEY'),
+
+    /*
+     * Your Google Recaptcha key
+     */
+    'secret' => env('GOOGLE_RECAPTCHA_SECRET'),
+
+    /*
+     * Skip recaptcha validation in local development
+     */
+    'skip_in_local_development' => true,
+
+];
+```
+
+The package has a default option to skip validation in local development
+
 ## Usage
 include the following API keys in your `.env` files:
 ```env
@@ -43,21 +70,9 @@ Because some js frameworks (like Vue) don't allow to have script tags inside you
 
 After that, your request can be validated with the `recaptcha` validation rule:
 ```php
-// inside your form request
-public function rules()
-{
-    return [
-        'g-recaptcha-response' => ['required', 'recaptcha'],
-    ];
-}
-
-public function messages()
-{
-    return [
-        'g-recaptcha-response.required' => 'Please ensure that you are a human!'
-        'g-recaptcha-response.recaptcha' => 'Please ensure that you are a human!'
-    ];
-}
+$request->validate([
+    'g-recaptcha-response' => ['recaptcha'],
+])
 ```
 
 ## Security

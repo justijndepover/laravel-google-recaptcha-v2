@@ -12,4 +12,9 @@ return [
      */
     'secret' => env('GOOGLE_RECAPTCHA_SECRET'),
 
+    /*
+     * Skip recaptcha validation in local development
+     */
+    'skip_in_local_development' => true,
+
 ];

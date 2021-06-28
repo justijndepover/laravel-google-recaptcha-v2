@@ -6,6 +6,10 @@ class GoogleRecaptchaValidator
 {
     public function validate($attribute, $value, $parameters, $validator)
     {
+        if (app()->isLocal() && config('google-recaptcha-v2.skip_in_local_development') == true) {
+            return true;
+        }
+
         $curl = curl_init('https://www.google.com/recaptcha/api/siteverify');
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_POST, true);
