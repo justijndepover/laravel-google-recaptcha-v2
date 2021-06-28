@@ -8,7 +8,7 @@ return [
     'key' => env('GOOGLE_RECAPTCHA_KEY'),
 
     /*
-     * Your Google Recaptcha key
+     * Your Google Recaptcha secret
      */
     'secret' => env('GOOGLE_RECAPTCHA_SECRET'),
 
